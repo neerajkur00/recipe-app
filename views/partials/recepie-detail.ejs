@@ -1,0 +1,63 @@
+<%-  include('./partials/header')%>
+
+<nav class="p-10 px-20 flex justify-between font-light">
+    <div class="flex gap-10"> 
+     <a href="/" class="text-xl">Home</a>
+     <a href="/explore/" class="text-xl">Explore</a>
+    </div>
+    <div class="flex gap-10 items-center">
+        <button class="text-2xl font-light"><a href="/recepie/create"><i class="ri-add-box-line"></i></a></button>
+        <a href="/users/profile/<%=user._id%>" class="text-xl">Profile</a>
+    </div>     
+ </nav>
+
+ <div class="w-[60vw] m-auto pb-10">
+    <h1 class="text-3xl mb-10">How To Make <%= recepie.name%>?</h1>
+    <img src="/images/<%=recepie.image%>" alt="<%=recepie.name%>" class="w-[60vw] h-[60vh] m-auto object-cover object-center rounded-md">
+    
+    <h1 class="text-2xl my-5">Ingredients</h1>
+    <div  class="flex gap-5 w-[60vw] flex-wrap">
+        <%recepie.ingriedents.forEach((ing)=>{%>
+            <button class="px-5 p-2 border-2 rounded-[10px] shrink-0"><%=ing%></button>
+        <%})%>
+    </div>
+    <h1 class="text-2xl pt-5">Steps</h1>
+    <ol class="gap-5 w-[60vw]">
+        <%recepie.steps.forEach((step,idx) =>{%>
+            <li class="my-5 text-xl font-light"><%= idx+1%>. <%= step%></li>
+        <%})%>
+    </ol>
+    <div class="flex gap-5">
+        <a href="/recepie/like/<%= recepie._id%>"><%= recepie.likes.length%>
+            <%if(isLiked){%>
+                <i class="ri-thumb-up-fill text-2xl text-blue-500"></i>
+            <%}else{%>
+                <i class="ri-thumb-up-line text-2xl text-blue-500"></i>
+            <%}%>
+        </a>
+        <a href="/recepie/comment/<%= recepie._id%>"><%= recepie.comment.length%> <i class="ri-chat-1-line text-2xl"></i></a>
+        <a href="/recepie/save/<%= recepie._id%>">
+            <%if(isSaved){%>
+                <i class="ri-clipboard-fill text-2xl"></i>
+            <%}else{%>
+                <i class="ri-clipboard-line text-2xl"></i>
+            <%}%>
+        </a>
+        <%if(del){%>
+           <a href="/recepie/delete/<%= recepie._id%>"> <i class="ri-delete-bin-6-line text-2xl"></i></a>
+        <%}%>
+    </div>
+ </div>
+
+<div class="pb-10">
+    <form action="/recepie/comment/<%=recepie._id%>" method="post" class="flex w-[60vw] m-auto p-2 justify-between border">
+        <input type="text" name="desc" placeholder="Write Your Comment Here" class="outline-none w-[90%] text-2xl">
+        <button class="text-green-600 text-2xl"><i class="ri-send-plane-2-fill"></i></button>
+     </form>
+    
+</div>
+<%if(isComments){%>
+    <%- include('./partials/comments')%>
+<%}%>
+
+ <%-  include('./partials/footer')%>

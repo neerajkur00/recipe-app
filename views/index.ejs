@@ -1,0 +1,24 @@
+<%- include('./partials/header')%>
+
+
+<div class="img">
+  <div class="blur">
+    
+  </div>
+  <div class="absolute top-0 text-white w-full">
+    <nav class="p-10 px-20 flex gap-10 font-light">
+      <a href="/" class="text-xl">Home</a>
+      <a href="/explore/" class="text-xl">Explore</a>
+      <%if(user){%>
+        <a href="/users/profile/<%=user._id%>" class="text-xl">Profile</a>
+      <%}else{%>
+        <a href="/users/signup" class="text-xl">Sign Up</a>
+      <%}%>
+      
+    </nav>
+    <h1 class="w-[80vw] m-auto text-8xl font-light text-center mt-28"> Your  Chef is Ready <br> to, Discover, something new Recipes . Untill wait </h1>
+  </div>
+</div>
+<%- include('./partials/featured-recepies')%>
+<%- include('./partials/featured-people')%>
+<%- include('./partials/footer')%>

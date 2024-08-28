@@ -1,0 +1,19 @@
+<%-  include('./partials/header')%>
+
+<nav class="p-10 px-20 flex justify-between font-light">
+    <div class="flex gap-10"> 
+     <a href="/" class="text-xl">Home</a>
+     <a href="/explore/" class="text-xl">Explore</a>
+    </div>
+     <a href="/users/profile/<%=user._id%>" class="text-xl">Profile</a>
+ </nav>
+       
+      <form action="/users/edit/<%= user._id%>" method="post" class="w-[20vw] m-auto mt-20 p-5 border-2">
+        <input type="text" name="name" placeholder="Enter Your Name" class="w-full p-2 mb-5 outline-none" value="<%= user.name%>">
+        <input type="text" name="username" placeholder="Enter Your userName" class="w-full p-2 mb-5 outline-none" value="<%= user.username%>">
+        <input type="email" name="email" placeholder="Enter Your Email" class="w-full p-2 mb-5 outline-none" value="<%= user.email%>">
+       <input type="text" name="bio" placeholder="Enter Bio" class="w-full p-2 mb-5 outline-none" value="<%= user.bio%>">
+        <button class="w-full p-2 mb-5 border-white border-2 text-white">Edit Profile</button>
+      </form>
+
+  <%- include('./partials/footer')%>

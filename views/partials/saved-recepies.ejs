@@ -1,0 +1,16 @@
+<div class="flex gap-10 w-full px-20 py-10 flex-wrap">
+    <%saved.saved.forEach((rec)=>{%>
+        <div class="w-[20vw] h-[60vh] border-2 border-black shrink-0">
+            <img src="/images/<%=rec.image%>" class="w-full h-[90%] object-cover" alt="">
+            <div class="flex justify-between items-center pe-5">
+                <p class="m-1 text-xl underline"><a href="/recepie/detail/<%=rec._id%>"><%= rec.name%></a></p>
+                <%if(isUser){%>
+                    <p><a href="/recepie/remove/<%= rec._id%>" class="text-2xl"><i class="ri-close-line"></i></a></p>
+                <%}%>
+            </div>
+        </div>
+    <%})%>
+
+   
+    
+</div>

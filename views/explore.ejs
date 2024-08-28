@@ -1,0 +1,31 @@
+<%- include('./partials/header')%>
+
+<nav class="p-10 px-20 flex justify-between font-light">
+   <div class="flex gap-10"> 
+    <a href="/" class="text-xl">Home</a>
+    <a href="/explore/" class="text-xl">Explore</a>
+   </div>
+
+    <div class="flex gap-10 items-center">
+        
+        <%if(user){%>
+            <button class="text-2xl font-light"><a href="/recepie/create"><i class="ri-add-box-line"></i></a></button>
+            <a href="/users/profile/<%=user._id%>" class="text-xl">Profile</a>
+        <%}else{%>
+            <a href="/users/login">Login</a>
+        <%}%>
+        
+    </div>
+</nav>
+
+<div class="flex gap-10 w-full px-20 py-10 flex-wrap">
+    <%recepie.forEach((rec)=>{%>
+        <div class="w-[20vw] h-[60vh] border-2 border-black shrink-0">
+            <img src="/images/<%=rec.image%>" class="w-full h-[90%] object-cover" alt="">
+            <p class="m-1 text-xl underline"><a href="/recepie/detail/<%=rec._id%>"><%= rec.name%></a></p>
+        </div>
+    <%})%>
+
+    
+    
+</div>

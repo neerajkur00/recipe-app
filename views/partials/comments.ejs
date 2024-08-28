@@ -1,0 +1,8 @@
+<div class="w-[60vw] pb-10 m-auto flex flex-col gap-5">
+    <%comments.comment.forEach((comment)=>{%>
+        <div class="w-full p-2 px-5 border bg-gray-200 rounded-[10px] relative">
+            <a href="/users/profile/<%=comment.user%>"><p class="absolute top-[-10px]">@<i><%= comment.username%></i></p></a>
+            <p class="mt-5"><%= comment.desc%></p>
+        </div>
+    <%})%>
+</div>

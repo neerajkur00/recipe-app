@@ -1,0 +1,40 @@
+<%- include('./partials/header')%>
+<nav class="p-10 px-20 flex justify-between font-light">
+    <div class="flex gap-10"> 
+     <a href="/" class="text-xl">Home</a>
+     <a href="/explore/" class="text-xl">Explore</a>
+    </div>
+ 
+     <div class="flex gap-10 items-center">
+         <a href="/users/profile/<%=user._id%>" class="text-xl">Profile</a>
+         <a href="/users/logout" class="text-xl">Log Out</a>
+     </div>
+ </nav>
+
+ <form action="/recepie/create" method="post" enctype="multipart/form-data" class="w-[70vw] border-black m-auto">
+    <div class="w-full p-5 flex justify-between items-center">
+        <label for="image" class="text-xl">Image :</label>
+        <input type="file" name="image" class="w-[90%] p-2 border outline-none ">
+    </div>
+    <div class="w-full p-5 flex justify-between items-center">
+        <label for="name" class="text-xl">Name : </label>
+        <input type="text" name="name" id="name" placeholder="Recepie Name" class="w-[90%] p-2 border outline-none ">
+    </div>
+    
+    <div  class="w-full p-5 flex justify-between items-center">
+        <label for="ingridents" class="text-xl">Ingridients :</label>
+        <textarea name="ingriedents" id="ingredents" placeholder="Enter Ingridients seperated by line" class="w-[90%] p-2 border outline-none "></textarea>
+    </div>
+    <div class="w-full p-5 flex justify-between items-center">
+        <label for="steps" class="text-xl">Steps :</label>
+        <textarea name="steps" id="steps" rows="5" placeholder="Enter Steps seperated by line" class="w-[90%] p-2 border outline-none "></textarea>
+    </div>
+    <div class="w-full p-5 flex justify-between items-center">
+        <label for="recepieType" class="text-xl">Type :</label>
+        <input type="text" id="recepieType" name="recepieType" placeholder="Enter Recepie Type" class="w-[90%] p-2 border outline-none ">
+    </div>
+    <button class="mx-10 w-[95%] p-2 border-2 border-black outline-none ">Add Recepie</button>
+   
+ </form>
+
+ <%- include('./partials/footer')%>

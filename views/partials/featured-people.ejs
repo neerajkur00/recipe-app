@@ -1,0 +1,9 @@
+<div class="flex gap-10 w-full px-20 py-10">
+    <%users.forEach((people,idx)=>{%>
+        <%if(idx < 4){%>
+        <div class="w-[20vw] h-[50vh] border border-black pt-5">
+            <img src="/images/<%=people.profilepic%>" class="w-[18vw] h-[18vw] rounded-full object-cover m-auto" alt="">
+            <p class="m-1 text-xl underline text-center"><a href="/users/profile/<%=people._id%>"><%=people.name%></a></p>
+        </div>
+    <%}})%>
+</div>

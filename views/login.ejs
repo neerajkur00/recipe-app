@@ -1,0 +1,21 @@
+<%- include('./partials/header')%>
+  <div class="img">
+    <div class="blur">
+
+    </div>
+    <div class="absolute top-0 w-full">
+      <nav class="p-10 px-20 flex gap-10 font-light text-white">
+        <a href="/" class="text-xl text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Home</a>
+        <a href="/explore/" class="text-xl">Explore</a>
+        <a href="/users/signup" class="text-xl">Sign Up</a>
+      </nav>
+      <form action="/users/login" method="post" class="w-[20vw] m-auto mt-20 p-5 border-2 border-green-400 rounded-2xl bg-blue-400">
+        <input type="text" name="username" placeholder="Enter Your Username" class="w-full p-2 mb-5 outline-none rounded-2xl">
+        <input type="password" name="password" placeholder="Enter Password" class="w-full p-2 mb-5 outline-none rounded-2xl">
+        <a href="/users/confirm-email" class=" font-light text-red-600">Forgot Password?</a>
+        <button class="w-full p-2 my-5 border-white border-2 hover:bg-green-400 hover:border-red-400 hover:rounded-2xl text-white">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/footer')%>

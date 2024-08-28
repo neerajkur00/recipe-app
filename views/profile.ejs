@@ -1,0 +1,80 @@
+<%- include('./partials/header')%>
+
+<nav class="p-10 px-20 flex justify-between font-light">
+   <div class="flex gap-10"> 
+    <a href="/" class="text-xl">Home</a>
+    <a href="/explore/" class="text-xl">Explore</a>
+   </div>
+
+    <div class="flex gap-10 items-center">
+        <button class="text-2xl font-light"><a href="/recepie/create"><i class="ri-add-box-line"></i></a></button>
+        <a href="/users/logout" class="text-xl">Log Out</a>
+    </div>
+</nav>
+
+<div class="w-[28vw] h-[20vh] m-auto flex justify-between items-center">
+    <form action="/users/image/<%= user._id%>" method="post" enctype="multipart/form-data" class="form-image hidden">
+        <input type="file" name="profilepic" class="input-image">
+        <input type="hidden" name="oldimage" value="<%= user.profilepic%>">
+    </form>
+   <div class="relative">
+    <img src="/images/<%=user.profilepic%>" class="w-[20vh] h-[20vh] rounded-full show-image" alt="Profile">
+    <%if(isUser){%>
+        <button class="button-image absolute bottom-0 right-0 text-2xl"><i class="ri-pencil-fill"></i></button>
+    <%}%>
+   </div>
+   <div>
+    <div class="flex gap-10 items-center">
+        <p class="capitalize text-xl"><%= user.name%></p>
+            <%if(isUser){%>
+                <button class="p-1 px-4 border border-black"><a href="/users/edit/<%= user._id%>">Edit Profile</a></button>
+            <%}else{%>
+                <%if(isFollower){%>
+                    <button class="p-1 px-4 border-blue-500 border rounded-[10px]"><a href="/users/follow/<%= user._id%>">Following</a></button>
+                <%}else{%>
+                    <button class="p-1 px-4 border-black bg-blue-500 text-white rounded-[10px]"><a href="/users/follow/<%= user._id%>">Follow</a></button>
+                <%}%>
+            <%}%>
+    </div>
+    <div class="flex gap-10 my-2">
+        <p><%=user.recepie.length%> Posts</p>
+        <p><%=user.follower.length%> Follower</p>
+    </div>
+    
+    <p class="w-[16vw] font-light"><%= user.bio%> </p>
+   </div>
+</div>
+<br>
+<hr><hr>
+
+<div class="w-full flex justify-center items-center gap-10 my-5">
+    <%if(save){%>
+        <a href="/users/created-recepies/<%=user._id%>" class="text-xl">created</a>
+        <a href="/users/saved-recepies/<%=user._id%>" class="underline text-xl">saved</a>
+    <%}else{%>
+        <a href="/users/created-recepies/<%=user._id%>" class="underline text-xl">created</a>
+        <a href="/users/saved-recepies/<%=user._id%>" class="text-xl">saved</a>
+    <%}%>
+    
+</div>
+
+<%if(save){%> 
+    <%- include('./partials/saved-recepies')%>
+<%}else{%>
+    <%- include('./partials/profile-recepies')%>
+<%}%>
+
+<script>
+    const formImage = document.querySelector('.form-image')
+    const inputImage = document.querySelector('.input-image')
+    const buttonImage = document.querySelector('.button-image')
+
+    buttonImage.addEventListener('click',()=>{
+        inputImage.click()
+    })
+
+    inputImage.addEventListener('change',()=>{
+        formImage.submit()
+    })
+</script>
+<%- include('./partials/footer')%>
